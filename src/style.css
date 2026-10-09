@@ -9,6 +9,7 @@
   --accent: #4cc2ff;
   --ok: #3ccf91;
   --error: #ff6b6b;
+  --gutter: 48px;
   font-family: "Inter", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -54,7 +55,7 @@ kbd {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 24px;
+  padding: 12px var(--gutter);
   border-bottom: 1px solid var(--border);
 }
 
@@ -80,12 +81,17 @@ kbd {
 }
 
 main {
-  padding: 24px;
+  padding: 24px var(--gutter);
 }
 
 .view {
   max-width: 1440px;
-  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+  }
 }
 
 .dropzone {
@@ -188,11 +194,6 @@ main {
   color: var(--error);
 }
 
-.stage {
-  border-radius: 12px;
-  background: #000;
-}
-
 video-player {
   display: block;
 }
@@ -201,7 +202,6 @@ danmaku-video-skin {
   display: block;
   width: min(100%, calc((100vh - 190px) * 16 / 9));
   aspect-ratio: 16 / 9;
-  margin: 0 auto;
 }
 
 .watch-info {

@@ -96,7 +96,7 @@ export class DanmakuLayer extends HTMLElement {
     const { scale, area } = settings.value;
     this.#width = this.clientWidth;
     this.#height = this.clientHeight;
-    this.#font = Math.round(Math.min(56, Math.max(14, this.#height * 0.04)) * scale);
+    this.#font = Math.round(Math.min(56, Math.max(this.#height * 0.04, 18 + this.#height * 0.013)) * scale);
     this.#laneHeight = Math.round(this.#font * LANE_RATIO);
     this.#laneCount = Math.max(1, Math.floor((this.#height * area) / this.#laneHeight));
     this.style.fontSize = `${this.#font}px`;
