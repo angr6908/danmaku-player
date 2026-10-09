@@ -18,6 +18,7 @@ const libraryView = $('#library-view');
 const watchView = $('#watch-view');
 const libraryList = $<HTMLUListElement>('#library-list');
 const libraryRoot = $('#library-root');
+const skin = document.querySelector('danmaku-video-skin')!;
 const video = $<HTMLVideoElement>('danmaku-video-skin video');
 const layer = document.querySelector('danmaku-layer')!;
 const toast = $('.player-toast');
@@ -95,6 +96,7 @@ function openVideo(src: string, title: string) {
   document.title = `${title} · Danmaku Player`;
   libraryView.hidden = true;
   watchView.hidden = false;
+  skin.pageHotkeys = true;
 }
 
 async function openFromLibrary(rel: string, danmaku: string | null) {
@@ -192,6 +194,7 @@ function route() {
   document.title = 'Danmaku Player';
   watchView.hidden = true;
   libraryView.hidden = false;
+  skin.pageHotkeys = false;
   renderLibrary();
 }
 

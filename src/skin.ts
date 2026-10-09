@@ -110,10 +110,13 @@ function fragment(markup: string) {
   return t.content;
 }
 
+const PAGE_HOTKEYS = ['Space', 'ArrowLeft', 'ArrowRight'];
+
 function buildTemplate() {
   const template = VideoSkinElement.template!.cloneNode(true) as HTMLTemplateElement;
   const root = template.content;
   root.querySelector('media-captions-button')!.before(fragment(CONTROLS_MARKUP));
+  for (const keys of PAGE_HOTKEYS) root.querySelector(`media-hotkey[keys="${keys}"]`)!.setAttribute('target', 'document');
   return template;
 }
 
@@ -161,6 +164,12 @@ export class DanmakuVideoSkinElement extends VideoSkinElement {
     );
 
     this.#unsubscribe = settings.subscribe((value) => this.#sync(value));
+  }
+
+  set pageHotkeys(enabled: boolean) {
+    for (const hotkey of this.shadowRoot!.querySelectorAll('media-hotkey[target="document"]')) {
+      hotkey.toggleAttribute('disabled', !enabled);
+    }
   }
 
   override disconnectedCallback() {
