@@ -1,0 +1,327 @@
+:root {
+  color-scheme: dark;
+  --bg: #0e0f13;
+  --surface: #171920;
+  --surface-hover: #1f222b;
+  --border: #2a2d38;
+  --text: #e8e9ee;
+  --muted: #8b8fa0;
+  --accent: #4cc2ff;
+  --ok: #3ccf91;
+  --error: #ff6b6b;
+  font-family: "Inter", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a {
+  color: inherit;
+}
+
+code,
+kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.85em;
+}
+
+kbd {
+  padding: 0.05em 0.4em;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--surface-hover);
+}
+
+main {
+  padding: 24px;
+}
+
+.view {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.dropzone {
+  padding: 28px;
+  border: 1.5px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.dropzone-title {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.dropzone-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.library-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 28px 0 12px;
+}
+
+.library-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.library-header .muted {
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.library-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.library-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  text-decoration: none;
+}
+
+.library-item:hover {
+  border-color: color-mix(in oklab, var(--accent) 50%, var(--border));
+  background: var(--surface-hover);
+}
+
+.library-name {
+  overflow-wrap: anywhere;
+  font-weight: 500;
+}
+
+.library-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.library-empty {
+  padding: 20px;
+  color: var(--muted);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--surface-hover);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.chip[data-state="ok"] {
+  background: color-mix(in oklab, var(--ok) 15%, transparent);
+  color: var(--ok);
+}
+
+.chip[data-state="error"] {
+  background: color-mix(in oklab, var(--error) 15%, transparent);
+  color: var(--error);
+}
+
+.stage {
+  border-radius: 12px;
+  background: #000;
+}
+
+video-player {
+  display: block;
+}
+
+danmaku-video-skin {
+  display: block;
+  width: min(100%, calc((100vh - 190px) * 16 / 9));
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+}
+
+.watch-info {
+  padding: 16px 4px;
+}
+
+.watch-info h1 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.watch-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.shortcuts {
+  font-size: 13px;
+}
+
+#drop-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  border: 3px dashed var(--accent);
+  font-size: 22px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.player-toast {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  z-index: 2;
+  translate: -50% 0;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgb(0 0 0 / 0.65);
+  color: #fff;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+danmaku-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+  color: #fff;
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans CJK JP", "Microsoft YaHei", system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+}
+
+danmaku-layer[hidden] {
+  display: none !important;
+}
+
+danmaku-layer .dm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: pre;
+  will-change: transform;
+  -webkit-text-stroke: 0.12em rgb(0 0 0 / 0.8);
+  paint-order: stroke fill;
+  text-shadow: 0 0 0.15em rgb(0 0 0 / 0.45);
+}
+
+danmaku-layer .dm-emoji {
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0 0.05em;
+  vertical-align: -0.25em;
+  object-fit: contain;
+}
+
+danmaku-layer .dm-author {
+  margin-right: 0.4em;
+  font-size: 0.75em;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+danmaku-layer .dm-author::after {
+  content: ":";
+}
+
+danmaku-layer .dm-paid,
+danmaku-layer .dm-member {
+  padding: 0.05em 0.55em;
+  border-radius: 0.6em;
+  background: var(--dm-bg, #1e88e5);
+  color: var(--dm-fg, #fff);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+
+danmaku-layer .dm-member {
+  --dm-bg: rgb(15 157 88 / 0.92);
+}
+
+danmaku-layer .dm-badge {
+  margin-right: 0.45em;
+  font-weight: 800;
+}
+
+danmaku-layer .dm-paid .dm-author,
+danmaku-layer .dm-member .dm-author {
+  opacity: 0.75;
+}

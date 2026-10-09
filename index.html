@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danmaku Player</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234cc2ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4A2.5 2.5 0 0 1 4 13.5v-8A2.5 2.5 0 0 1 6.5 3Z'/%3E%3Cpath d='M8 7.5h8M8 11.5h5'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#/">Danmaku Player</a>
+      <div class="topbar-actions">
+        <label class="button">
+          <input id="file-input" type="file" accept="video/*,.mkv,.json,.xml" multiple hidden />
+          Open files…
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <section id="library-view" class="view">
+        <div class="dropzone">
+          <p class="dropzone-title">Drop a video and its danmaku file here</p>
+          <p class="dropzone-hint">YouTube <code>.live_chat.json</code> (yt-dlp) and Bilibili <code>.xml</code> are supported. Drop a danmaku file while watching to swap it.</p>
+        </div>
+        <div class="library-header">
+          <h2>Library</h2>
+          <span id="library-root" class="muted"></span>
+        </div>
+        <ul id="library-list" class="library-list"></ul>
+      </section>
+
+      <section id="watch-view" class="view" hidden>
+        <div class="stage">
+          <video-player>
+            <danmaku-video-skin>
+              <video playsinline preload="metadata"></video>
+              <danmaku-layer></danmaku-layer>
+              <div class="player-toast" hidden></div>
+            </danmaku-video-skin>
+          </video-player>
+        </div>
+        <div class="watch-info">
+          <h1 id="watch-title"></h1>
+          <div class="watch-meta">
+            <span id="danmaku-status" class="chip"></span>
+            <span id="offset-status" class="chip" hidden></span>
+            <span class="muted shortcuts"><kbd>D</kbd> toggle danmaku · <kbd>[</kbd> <kbd>]</kbd> shift sync ±0.5s · <kbd>\</kbd> reset sync</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="drop-overlay" hidden><span>Drop to open</span></div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
